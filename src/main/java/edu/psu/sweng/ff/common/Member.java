@@ -14,6 +14,7 @@ public class Member
 	@XmlTransient private String email;
 	@XmlTransient private String mobileNumber;
 	@XmlTransient private boolean hideEmail;
+	@XmlTransient private boolean hideName;
 
 	private transient String accessToken;
 	private transient String password;
@@ -151,8 +152,20 @@ public class Member
 	public void setAccessToken(String accessToken) {
 		this.accessToken = accessToken;
 	}
-	
-	
+
+	/**
+	 * @return the hideName
+	 */
+	public boolean isHideName() {
+		return hideName;
+	}
+
+	/**
+	 * @param hideName the hideName to set
+	 */
+	public void setHideName(boolean hideName) {
+		this.hideName = hideName;
+	}
 	
 	
 }

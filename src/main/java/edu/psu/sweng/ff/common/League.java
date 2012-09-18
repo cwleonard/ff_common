@@ -1,6 +1,9 @@
 package edu.psu.sweng.ff.common;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -14,6 +17,12 @@ public class League {
 	@XmlTransient private Member commissioner;
 	
 	@XmlTransient private boolean autoDraft;
+	
+	@XmlTransient private Season season;
+	
+	@XmlTransient private List<Team> teams;
+	
+	@XmlTransient private Draft draft;
 
 	/**
 	 * @return the id
@@ -73,6 +82,36 @@ public class League {
 	 */
 	public void setAutoDraft(boolean autoDraft) {
 		this.autoDraft = autoDraft;
+	}
+
+	/**
+	 * @return the season
+	 */
+	@XmlElement
+	public Season getSeason() {
+		return season;
+	}
+
+	/**
+	 * @param season the season to set
+	 */
+	public void setSeason(Season season) {
+		this.season = season;
+	}
+
+	/**
+	 * @return the teams
+	 */
+	@XmlElementWrapper
+	public List<Team> getTeams() {
+		return teams;
+	}
+
+	/**
+	 * @param teams the teams to set
+	 */
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
 	}
 	
 	
