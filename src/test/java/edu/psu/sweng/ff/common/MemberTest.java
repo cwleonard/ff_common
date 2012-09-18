@@ -10,9 +10,15 @@ import org.junit.Test;
 public class MemberTest
 {
     @Test
-    public void testApp()
-    {
-        assertTrue( true );
+    public void testMember() {
+    	
+    	Member m = new Member();
+    	m.setFirstName("firstname");
+    	m.setLastName("lastname");
+    	
+    	assertEquals("firstname", m.getFirstName());
+    	assertEquals("lastname", m.getLastName());
+        
     }
     
     
