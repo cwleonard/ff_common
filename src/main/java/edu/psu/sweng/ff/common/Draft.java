@@ -18,6 +18,10 @@ public class Draft {
 		this.automatic = automatic;
 	}
 	
+	public void start() {
+		//TODO
+	}
+	
 	
 	
 }
