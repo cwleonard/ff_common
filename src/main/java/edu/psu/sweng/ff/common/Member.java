@@ -1,5 +1,9 @@
 package edu.psu.sweng.ff.common;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -15,6 +19,7 @@ public class Member
 	@XmlTransient private String mobileNumber;
 	@XmlTransient private boolean hideEmail;
 	@XmlTransient private boolean hideName;
+	@XmlTransient private String passwordHash;
 
 	private transient String accessToken;
 	private transient String password;
@@ -80,20 +85,26 @@ public class Member
 	}
 
 	/**
-	 * @return the password
-	 */
-	@XmlTransient
-	public String getPassword() {
-		return password;
-	}
-
-	/**
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+		try {
+			this.setPasswordHash(this.getHash(this.password));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
+	@XmlElement
+	public void setPasswordHash(String ph) {
+		this.passwordHash = ph;
+	}
+	
+	public String getPasswordHash() {
+		return this.passwordHash;
+	}
+	
 	/**
 	 * @return the email
 	 */
@@ -167,5 +178,19 @@ public class Member
 		this.hideName = hideName;
 	}
 	
+	public static String getHash(String s) throws NoSuchAlgorithmException,
+	UnsupportedEncodingException {
+
+		MessageDigest digest = MessageDigest.getInstance("SHA-1");
+		digest.reset();
+		byte[] hashed = digest.digest(s.getBytes("UTF-8"));
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < hashed.length; ++i) {
+			sb.append(Integer.toHexString((hashed[i] & 0xFF) | 0x100)
+					.substring(1, 3));
+		}
+		return sb.toString();
+
+	}
 	
 }
