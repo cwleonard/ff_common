@@ -114,6 +114,8 @@ public class League {
 		this.teams = teams;
 	}
 	
-	
+	public void startDraft() {
+		this.draft.start();
+	}
 	
 }
