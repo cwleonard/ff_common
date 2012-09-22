@@ -124,7 +124,7 @@ public class Team {
 	 * @return
 	 */
 	public Roster getRoster(int week) {
-		return null;
+		return new Roster();
 	}
 	
 	/**

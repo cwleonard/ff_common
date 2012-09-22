@@ -1,5 +1,6 @@
 package edu.psu.sweng.ff.common;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -26,6 +27,10 @@ public class League {
 	
 	@XmlTransient private int week;
 
+	public League() {
+		this.teams = new ArrayList<Team>();
+	}
+	
 	/**
 	 * @return the id
 	 */
@@ -156,7 +161,8 @@ public class League {
 	 * @return
 	 */
 	public Team getTeam(Member m) {
-		return null;
+		//TODO: the right thing
+		return new Team();
 	}
 	
 }
