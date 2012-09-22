@@ -23,6 +23,8 @@ public class League {
 	@XmlTransient private List<Team> teams;
 	
 	@XmlTransient private Draft draft;
+	
+	@XmlTransient private int week;
 
 	/**
 	 * @return the id
@@ -113,9 +115,48 @@ public class League {
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
 	}
-	
+
+	/**
+	 * @return the draft
+	 */
+	public Draft getDraft() {
+		return draft;
+	}
+
+	/**
+	 * @param draft the draft to set
+	 */
+	public void setDraft(Draft draft) {
+		this.draft = draft;
+	}
+
+	/**
+	 * @return the week
+	 */
+	public int getWeek() {
+		return week;
+	}
+
+	/**
+	 * @param week the week to set
+	 */
+	@XmlElement
+	public void setWeek(int week) {
+		this.week = week;
+	}
+
 	public void startDraft() {
 		this.draft.start();
+	}
+	
+	/**
+	 * Should return the team in this league owned by the specified Member
+	 * 
+	 * @param m
+	 * @return
+	 */
+	public Team getTeam(Member m) {
+		return null;
 	}
 	
 }

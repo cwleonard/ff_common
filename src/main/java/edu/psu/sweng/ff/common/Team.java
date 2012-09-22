@@ -117,4 +117,23 @@ public class Team {
 		this.standings = standings;
 	}
 	
+	/**
+	 * Should return the Roster for the given week.
+	 * 
+	 * @param week
+	 * @return
+	 */
+	public Roster getRoster(int week) {
+		return null;
+	}
+	
+	/**
+	 * Should return true if the specified player is on this team
+	 * 
+	 * @param p
+	 * @return
+	 */
+	public boolean hasPlayer(Player p) {
+		return false;
+	}
 }
