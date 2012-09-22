@@ -123,6 +123,7 @@ public class DraftTest {
 		Member m = d.getWaitingFor();
 		
 		List<Player> players = d.getAvailablePlayers();
+		assertTrue(players.size() > 0);
 		
 		Team t = l.getTeam(m);
 		
@@ -162,6 +163,7 @@ public class DraftTest {
 		
 			List<Player> players = d.getAvailablePlayers();
 			Iterator<Player> it = players.iterator();
+			assertTrue(players.size() >= 40); // there must be at least 40 players (2 teams * 20 players)
 			while (it.hasNext()) {
 				Player p = it.next();
 				if (d.getRound() == 1 || d.getRound() == 11) {
