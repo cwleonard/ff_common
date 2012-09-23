@@ -10,9 +10,17 @@ import org.junit.Test;
 public class LeagueTest
 {
     @Test
-    public void testApp()
+    public void testSetCommissioner()
     {
-        assertTrue( true );
+    	League l = new League();
+    	
+    	Member m = new Member();
+    	m.setUserName("tester");
+    	
+    	l.setCommissioner(m);
+    	
+    	assertEquals("tester", l.getCommissioner().getUserName());
+    	
     }
     
     
