@@ -255,6 +255,64 @@ public class DraftTest {
 		assertTrue(false);
 	}
 
-	//TODO: the rest of the tests
+	@Test
+	public void testRound11() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound12() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound13() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound14() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound15() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound16() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound17() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound18() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound19() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
+
+	@Test
+	public void testRound20() {
+		//TODO: real stuff
+		assertTrue(false);
+	}
 	
 }
