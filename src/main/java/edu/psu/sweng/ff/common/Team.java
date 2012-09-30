@@ -22,6 +22,8 @@ public class Team {
 	@XmlTransient private List<Roster> rosters;
 	
 	@XmlTransient private Standings standings;
+	
+	@XmlTransient private int leagueId;
 
 	public Team() {
 		rosters = new ArrayList<Roster>();
@@ -136,4 +138,14 @@ public class Team {
 	public boolean hasPlayer(Player p) {
 		return false;
 	}
+
+	public int getLeagueId() {
+		return leagueId;
+	}
+
+	public void setLeagueId(int leagueId) {
+		this.leagueId = leagueId;
+	}
+	
+	
 }
