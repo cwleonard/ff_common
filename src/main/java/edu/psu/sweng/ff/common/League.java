@@ -8,24 +8,23 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-@XmlRootElement
 public class League {
 
-	@XmlTransient private int id;
+	private int id;
 	
-	@XmlTransient private String name;
+	private String name;
 	
-	@XmlTransient private Member commissioner;
+	private Member commissioner;
 	
-	@XmlTransient private boolean autoDraft;
+	private boolean autoDraft;
 	
-	@XmlTransient private Season season;
+	private Season season;
 	
-	@XmlTransient private List<Team> teams;
+	private List<Team> teams;
 	
-	@XmlTransient private Draft draft;
+	private Draft draft;
 	
-	@XmlTransient private int week;
+	private int week;
 
 	public League() {
 		this.teams = new ArrayList<Team>();
@@ -34,7 +33,6 @@ public class League {
 	/**
 	 * @return the id
 	 */
-	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -49,7 +47,6 @@ public class League {
 	/**
 	 * @return the name
 	 */
-	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -64,7 +61,6 @@ public class League {
 	/**
 	 * @return the commissioner
 	 */
-	@XmlElement
 	public Member getCommissioner() {
 		return commissioner;
 	}
@@ -79,7 +75,6 @@ public class League {
 	/**
 	 * @return the autoDraft
 	 */
-	@XmlElement
 	public boolean isAutoDraft() {
 		return autoDraft;
 	}
@@ -94,7 +89,6 @@ public class League {
 	/**
 	 * @return the season
 	 */
-	@XmlElement
 	public Season getSeason() {
 		return season;
 	}
@@ -109,7 +103,6 @@ public class League {
 	/**
 	 * @return the teams
 	 */
-	@XmlElementWrapper
 	public List<Team> getTeams() {
 		return teams;
 	}
@@ -145,7 +138,6 @@ public class League {
 	/**
 	 * @param week the week to set
 	 */
-	@XmlElement
 	public void setWeek(int week) {
 		this.week = week;
 	}

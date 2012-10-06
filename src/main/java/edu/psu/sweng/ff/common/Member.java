@@ -4,22 +4,17 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-
-@XmlRootElement
 public class Member 
 {
-	@XmlTransient private int id;
-	@XmlTransient private String firstName;
-	@XmlTransient private String lastName;
-	@XmlTransient private String userName;
-	@XmlTransient private String email;
-	@XmlTransient private String mobileNumber;
-	@XmlTransient private boolean hideEmail;
-	@XmlTransient private boolean hideName;
-	@XmlTransient private String passwordHash;
+	private int id;
+	private String firstName;
+	private String lastName;
+	private String userName;
+	private String email;
+	private String mobileNumber;
+	private boolean hideEmail;
+	private boolean hideName;
+	private String passwordHash;
 
 	private transient String accessToken;
 	private transient String password;
@@ -27,7 +22,6 @@ public class Member
 	/**
 	 * @return the id
 	 */
-	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -42,7 +36,6 @@ public class Member
 	/**
 	 * @return the firstName
 	 */
-	@XmlElement
 	public String getFirstName() {
 		return firstName;
 	}
@@ -57,7 +50,6 @@ public class Member
 	/**
 	 * @return the lastName
 	 */
-	@XmlElement
 	public String getLastName() {
 		return lastName;
 	}
@@ -72,7 +64,6 @@ public class Member
 	/**
 	 * @return the userName
 	 */
-	@XmlElement
 	public String getUserName() {
 		return userName;
 	}
@@ -96,7 +87,6 @@ public class Member
 		}
 	}
 
-	@XmlElement
 	public void setPasswordHash(String ph) {
 		this.passwordHash = ph;
 	}
@@ -108,7 +98,6 @@ public class Member
 	/**
 	 * @return the email
 	 */
-	@XmlElement
 	public String getEmail() {
 		return email;
 	}
@@ -123,7 +112,6 @@ public class Member
 	/**
 	 * @return the mobileNumber
 	 */
-	@XmlElement
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -138,7 +126,6 @@ public class Member
 	/**
 	 * @return the hideEmail
 	 */
-	@XmlElement
 	public boolean isHideEmail() {
 		return hideEmail;
 	}
