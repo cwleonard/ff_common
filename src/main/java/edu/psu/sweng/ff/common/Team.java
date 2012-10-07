@@ -3,27 +3,21 @@ package edu.psu.sweng.ff.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-
-@XmlRootElement
 public class Team {
 
-	@XmlTransient private int id;
+	private int id;
 	
-	@XmlTransient private String name;
+	private String name;
 	
-	@XmlTransient private String logo;
+	private String logo;
 	
-	@XmlTransient private Member owner;
+	private Member owner;
 	
-	@XmlTransient private List<Roster> rosters;
+	private List<Roster> rosters;
 	
-	@XmlTransient private Standings standings;
+	private Standings standings;
 	
-	@XmlTransient private int leagueId;
+	private int leagueId;
 
 	public Team() {
 		rosters = new ArrayList<Roster>();
@@ -32,7 +26,6 @@ public class Team {
 	/**
 	 * @return the id
 	 */
-	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -47,7 +40,6 @@ public class Team {
 	/**
 	 * @return the name
 	 */
-	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -62,7 +54,6 @@ public class Team {
 	/**
 	 * @return the logo
 	 */
-	@XmlElement
 	public String getLogo() {
 		return logo;
 	}
@@ -77,7 +68,6 @@ public class Team {
 	/**
 	 * @return the owner
 	 */
-	@XmlElement
 	public Member getOwner() {
 		return owner;
 	}
@@ -92,7 +82,6 @@ public class Team {
 	/**
 	 * @return the rosters
 	 */
-	@XmlElementWrapper
 	public List<Roster> getRosters() {
 		return rosters;
 	}
@@ -107,7 +96,6 @@ public class Team {
 	/**
 	 * @return the standings
 	 */
-	@XmlElement
 	public Standings getStandings() {
 		return standings;
 	}

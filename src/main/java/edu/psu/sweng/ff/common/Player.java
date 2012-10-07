@@ -2,27 +2,23 @@ package edu.psu.sweng.ff.common;
 
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-
-@XmlRootElement
 public class Player {
 
-	@XmlTransient private String firstName;
+	private String firstName;
 	
-	@XmlTransient private String lastName;
+	private String lastName;
 	
-	@XmlTransient private Date birthdate;
+	private Date birthdate;
 	
-	@XmlTransient private int height;
+	private int height;
 	
-	@XmlTransient private int weight;
+	private int weight;
 	
-	@XmlTransient private String position;
+	private String position;
 	
-	@XmlTransient private String college;
+	private String college;
 	
-	@XmlTransient private String nflTeam;
+	private String nflTeam;
 
 	/**
 	 * @return the firstName

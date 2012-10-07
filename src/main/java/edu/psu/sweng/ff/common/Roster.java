@@ -8,16 +8,15 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-@XmlRootElement
 public class Roster {
 
-	@XmlTransient private int id;
+	private int id;
 	
-	@XmlTransient private int week;
+	private int week;
 	
-	@XmlTransient private List<Player> startingPlayers;
+	private List<Player> startingPlayers;
 	
-	@XmlTransient private List<Player> benchPlayers;
+	private List<Player> benchPlayers;
 
 	public Roster() {
 		startingPlayers = new ArrayList<Player>();
@@ -27,7 +26,6 @@ public class Roster {
 	/**
 	 * @return the id
 	 */
-	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -42,7 +40,6 @@ public class Roster {
 	/**
 	 * @return the week
 	 */
-	@XmlElement
 	public int getWeek() {
 		return week;
 	}
@@ -57,7 +54,6 @@ public class Roster {
 	/**
 	 * @return the startingPlayers
 	 */
-	@XmlElementWrapper
 	public List<Player> getStartingPlayers() {
 		return startingPlayers;
 	}
@@ -72,7 +68,6 @@ public class Roster {
 	/**
 	 * @return the benchPlayers
 	 */
-	@XmlElementWrapper
 	public List<Player> getBenchPlayers() {
 		return benchPlayers;
 	}

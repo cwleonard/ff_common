@@ -89,7 +89,7 @@ public class DraftTest {
 	}
 	
 	@Test
-	public void testDraftRounds() {
+	public void testAutoDraft() {
 		
 		League l = new League();
 		Team t1 = new Team();
