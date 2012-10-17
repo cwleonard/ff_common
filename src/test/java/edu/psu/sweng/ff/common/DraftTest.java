@@ -23,7 +23,12 @@ public class DraftTest {
 	public void testRoundType() {
 		
 		Draft d = new Draft();
-		d.start();
+		try {
+			d.start();
+		} catch (DraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		assertTrue(d.isStarterRound());
 		assertFalse(d.isBenchRound());
@@ -99,7 +104,12 @@ public class DraftTest {
 		l.getTeams().add(t2);
 		
 		Draft d = new Draft();
-		d.start();
+		try {
+			d.start();
+		} catch (DraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		assertEquals(20, d.getRound());
 		
@@ -118,7 +128,12 @@ public class DraftTest {
 		l.getTeams().add(t2);
 		
 		Draft d = new Draft();
-		d.start();
+		try {
+			d.start();
+		} catch (DraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		Member m = d.getWaitingFor();
 		
@@ -157,9 +172,14 @@ public class DraftTest {
 		l.getTeams().add(t2);
 		
 		Draft d = new Draft();
-		d.start();
+		try {
+			d.start();
+		} catch (DraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		while (d.getRound() < 21) {
+		do {
 		
 			List<Player> players = d.getAvailablePlayers();
 			Iterator<Player> it = players.iterator();
@@ -190,9 +210,7 @@ public class DraftTest {
 				}
 			}
 		
-			d.nextRound();
-		
-		}
+		} while (d.nextRound());
 		
 	}
 

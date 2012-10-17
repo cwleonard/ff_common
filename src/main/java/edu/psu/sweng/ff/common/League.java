@@ -3,11 +3,6 @@ package edu.psu.sweng.ff.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-
 public class League {
 
 	private int id;
@@ -142,7 +137,7 @@ public class League {
 		this.week = week;
 	}
 
-	public void startDraft() {
+	public void startDraft() throws DraftException {
 		this.draft.start();
 	}
 	
