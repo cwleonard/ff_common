@@ -75,9 +75,33 @@ public class Draft {
 
 			Team t = teamOrder.get(teamIndex);
 			Member o = t.getOwner();
-			//notify member that it's their turn
+			this.waitingFor = o;
+			//TODO: notify member that it's their turn
 				
 		}
+		
+	}
+	
+	public boolean draftPlayer(Player p) {
+		
+		Team team = this.teamOrder.get(this.teamIndex);
+		Roster r = team.getRoster(0);
+		if (this.isStarterRound()) {
+			r.addStartingPlayer(p);
+		} else {
+			r.addBenchPlayer(p);
+		}
+		
+		if (!this.nextTeam()) {
+			this.nextRound();
+		}
+		
+		Team nextTeam = teamOrder.get(teamIndex);
+		Member o = nextTeam.getOwner();
+		this.waitingFor = o;
+		//TODO: notify next player
+		
+		return true;
 		
 	}
 
