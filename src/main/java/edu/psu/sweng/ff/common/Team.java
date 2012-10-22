@@ -114,7 +114,15 @@ public class Team {
 	 * @return
 	 */
 	public Roster getRoster(int week) {
-		return new Roster();
+		
+		Roster r = this.rosters.get(week-1);
+		if (r == null) {
+			r = new Roster();
+			r.setTeamId(id);
+			r.setWeek(week);
+		}
+		return r;
+		
 	}
 	
 	/**

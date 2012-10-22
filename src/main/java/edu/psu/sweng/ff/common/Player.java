@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Player {
 
+	private String id;
+	
 	private String firstName;
 	
 	private String lastName;
@@ -19,6 +21,20 @@ public class Player {
 	private String college;
 	
 	private String nflTeam;
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the firstName

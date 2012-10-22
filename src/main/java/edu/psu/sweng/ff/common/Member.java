@@ -180,4 +180,17 @@ public class Member
 
 	}
 	
+	public boolean equals(Object o) {
+
+		if (o instanceof Member) {
+			
+			Member om = (Member)o;
+			return (om.id == this.id);
+			
+		} else {
+			return false;
+		}
+		
+	}
+	
 }

@@ -21,6 +21,10 @@ public class Draft {
 	
 	private transient PlayerSource playerSource;
 	
+	private transient Notifier notifier;
+	
+	private transient RosterStore rosterStore;
+	
 	/**
 	 * @return the automatic
 	 */
@@ -41,6 +45,11 @@ public class Draft {
 		this.teamIndex = 0;
 		
 		List<Team> lt = this.league.getTeams();
+		
+		if (lt.size() < 2) {
+			throw new DraftException("draft cannot start until there are at least 2 teams in the league");
+		}
+		
 		teamOrder = new ArrayList<Team>(lt);
 		Collections.shuffle(teamOrder);
 		
@@ -59,12 +68,16 @@ public class Draft {
 					List<Player> players = this.getAvailablePlayers();
 
 					Player p = players.get(0); // first player should be top rated
-					Roster r = t.getRoster(0);
+					Roster r = t.getRoster(1);
 
 					if (this.isStarterRound()) {
 						r.addStartingPlayer(p);
 					} else {
 						r.addBenchPlayer(p);
+					}
+					
+					if (this.rosterStore != null) {
+						this.rosterStore.store(r);
 					}
 
 				}
@@ -76,7 +89,11 @@ public class Draft {
 			Team t = teamOrder.get(teamIndex);
 			Member o = t.getOwner();
 			this.waitingFor = o;
-			//TODO: notify member that it's their turn
+			if (this.notifier != null) {
+				notifier.notify(o, "Fantasy Football Draft",
+						"It is your turn to draft a player for your team \""
+								+ t.getName() + "\"");
+			}
 				
 		}
 		
@@ -85,11 +102,15 @@ public class Draft {
 	public boolean draftPlayer(Player p) {
 		
 		Team team = this.teamOrder.get(this.teamIndex);
-		Roster r = team.getRoster(0);
+		Roster r = team.getRoster(1);
 		if (this.isStarterRound()) {
 			r.addStartingPlayer(p);
 		} else {
 			r.addBenchPlayer(p);
+		}
+		
+		if (this.rosterStore != null) {
+			this.rosterStore.store(r);
 		}
 		
 		if (!this.nextTeam()) {
@@ -99,7 +120,12 @@ public class Draft {
 		Team nextTeam = teamOrder.get(teamIndex);
 		Member o = nextTeam.getOwner();
 		this.waitingFor = o;
-		//TODO: notify next player
+		
+		if (this.notifier != null) {
+			notifier.notify(o, "Fantasy Football Draft",
+					"It is your turn to draft a player for your team \""
+							+ nextTeam.getName() + "\"");
+		}
 		
 		return true;
 		
@@ -206,6 +232,64 @@ public class Draft {
 	public void setPlayerSource(PlayerSource playerSource) {
 		this.playerSource = playerSource;
 	}
+
+	/**
+	 * @return the league
+	 */
+	public League getLeague() {
+		return league;
+	}
+
+	/**
+	 * @param league the league to set
+	 */
+	public void setLeague(League league) {
+		this.league = league;
+		league.setDraft(this);
+	}
+
+	/**
+	 * @return the teamIndex
+	 */
+	public int getTeamIndex() {
+		return teamIndex;
+	}
+
+	/**
+	 * @param teamIndex the teamIndex to set
+	 */
+	public void setTeamIndex(int teamIndex) {
+		this.teamIndex = teamIndex;
+	}
+
+	/**
+	 * @return the notifier
+	 */
+	public Notifier getNotifier() {
+		return notifier;
+	}
+
+	/**
+	 * @param notifier the notifier to set
+	 */
+	public void setNotifier(Notifier notifier) {
+		this.notifier = notifier;
+	}
+
+	/**
+	 * @return the rosterStore
+	 */
+	public RosterStore getRosterStore() {
+		return rosterStore;
+	}
+
+	/**
+	 * @param rosterStore the rosterStore to set
+	 */
+	public void setRosterStore(RosterStore rosterStore) {
+		this.rosterStore = rosterStore;
+	}
+	
 	
 	
 	

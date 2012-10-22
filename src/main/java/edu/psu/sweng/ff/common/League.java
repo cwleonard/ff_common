@@ -138,6 +138,7 @@ public class League {
 	}
 
 	public void startDraft() throws DraftException {
+		this.draft.setAutomatic(this.autoDraft);
 		this.draft.start();
 	}
 	

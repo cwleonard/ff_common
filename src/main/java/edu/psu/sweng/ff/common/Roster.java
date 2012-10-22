@@ -3,14 +3,11 @@ package edu.psu.sweng.ff.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-
 public class Roster {
 
 	private int id;
+	
+	private int teamId;
 	
 	private int week;
 	
@@ -35,6 +32,20 @@ public class Roster {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the teamId
+	 */
+	public int getTeamId() {
+		return teamId;
+	}
+
+	/**
+	 * @param teamId the teamId to set
+	 */
+	public void setTeamId(int teamId) {
+		this.teamId = teamId;
 	}
 
 	/**

@@ -111,8 +111,19 @@ public class DraftTest {
 			e.printStackTrace();
 		}
 		
-		assertEquals(20, d.getRound());
+		assertEquals("round after completion should be 21", 21, d.getRound());
 		
+		Roster r1 = t1.getRoster(1);
+		List<Player> sp1 = r1.getStartingPlayers();
+		List<Player> bp1 = r1.getBenchPlayers();
+		assertEquals("team 1 starting roster should be 10 players", 10, sp1.size());
+		assertEquals("team 1 bench roster should be 10 players", 10, bp1.size());
+
+		Roster r2 = t1.getRoster(1);
+		List<Player> sp2 = r2.getStartingPlayers();
+		List<Player> bp2 = r2.getBenchPlayers();
+		assertEquals("team 2 starting roster should be 10 players", 10, sp2.size());
+		assertEquals("team 2 bench roster should be 10 players", 10, bp2.size());		
 		
 	}
 	
@@ -214,123 +225,5 @@ public class DraftTest {
 		
 	}
 
-	@Test
-	public void testRound1() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-	
-	@Test
-	public void testRound2() {
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound3() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound4() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound5() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound6() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound7() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound8() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound9() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound10() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound11() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound12() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound13() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound14() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound15() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound16() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound17() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound18() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound19() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
-
-	@Test
-	public void testRound20() {
-		//TODO: real stuff
-		assertTrue(false);
-	}
 	
 }
