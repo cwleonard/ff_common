@@ -3,6 +3,8 @@ package edu.psu.sweng.ff.common;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Member 
 {
@@ -15,10 +17,15 @@ public class Member
 	private boolean hideEmail;
 	private boolean hideName;
 	private String passwordHash;
+	private List<Invitation> invitations;
 
 	private transient String accessToken;
 	private transient String password;
 
+	public Member() {
+		invitations = new ArrayList<Invitation>();
+	}
+	
 	/**
 	 * @return the id
 	 */
@@ -164,7 +171,21 @@ public class Member
 	public void setHideName(boolean hideName) {
 		this.hideName = hideName;
 	}
-	
+
+	/**
+	 * @return the invitations
+	 */
+	public List<Invitation> getInvitations() {
+		return invitations;
+	}
+
+	/**
+	 * @param invitations the invitations to set
+	 */
+	public void setInvitations(List<Invitation> invitations) {
+		this.invitations = invitations;
+	}
+
 	public static String getHash(String s) throws NoSuchAlgorithmException,
 	UnsupportedEncodingException {
 

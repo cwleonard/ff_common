@@ -2,6 +2,6 @@ package edu.psu.sweng.ff.common;
 
 public interface Notifier {
 
-	public void notify(Member m, String subj, String msg);
+	public boolean notify(Member m, String subj, String msg);
 	
 }
