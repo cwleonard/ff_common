@@ -170,19 +170,19 @@ public class Draft {
 		
 		List<Player> plist = null;
 		if (this.round == 1 || this.round == 11) {
-			plist = playerSource.getByType("QB");
+			plist = playerSource.getByType(league.getId(), "QB");
 		} else if (this.round == 2 || this.round == 3 || this.round == 12 || this.round == 13) {
-			plist = playerSource.getByType("RB");
+			plist = playerSource.getByType(league.getId(), "RB");
 		} else if (this.round == 4 || this.round == 5 || this.round == 14 || this.round == 15) {
-			plist = playerSource.getByType("WR");
+			plist = playerSource.getByType(league.getId(), "WR");
 		} else if (this.round == 6 || this.round == 16) {
-			plist = playerSource.getByType("TE");
+			plist = playerSource.getByType(league.getId(), "TE");
 		} else if (this.round == 7 || this.round == 8 || this.round == 17 || this.round == 18) {
-			plist = playerSource.getByType("RB","WR","TE");
+			plist = playerSource.getByType(league.getId(), "RB","WR","TE");
 		} else if (this.round == 9 || this.round == 19) {
-			plist = playerSource.getByType("DE");
+			plist = playerSource.getByType(league.getId(), "DE");
 		} else if (this.round == 10 || this.round == 20) {
-			plist = playerSource.getByType("K");
+			plist = playerSource.getByType(league.getId(), "K");
 		}
 		return plist;
 		
