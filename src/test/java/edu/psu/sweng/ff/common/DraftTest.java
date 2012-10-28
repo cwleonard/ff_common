@@ -21,12 +21,19 @@ public class DraftTest {
 	
 	@Test
 	public void testRoundType() {
-		
+
+		League l = new League();
+		Team t1 = new Team();
+		Team t2 = new Team();
+		l.setAutoDraft(true);
+		l.getTeams().add(t1);
+		l.getTeams().add(t2);
+
 		Draft d = new Draft();
+		d.setLeague(l);
 		try {
 			d.start();
 		} catch (DraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -98,16 +105,19 @@ public class DraftTest {
 		
 		League l = new League();
 		Team t1 = new Team();
+		t1.getRosters().add(new Roster()); // need a week 1 roster
 		Team t2 = new Team();
+		t2.getRosters().add(new Roster()); // need a week 1 roster
 		l.setAutoDraft(true);
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 		
 		Draft d = new Draft();
+		d.setLeague(l);
+		d.setPlayerSource(new TestPlayerSource());
 		try {
 			d.start();
 		} catch (DraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -132,28 +142,30 @@ public class DraftTest {
 		
 		League l = new League();
 		Team t1 = new Team();
+		t1.getRosters().add(new Roster()); // need a week 1 roster
 		Team t2 = new Team();
-		//TODO: set up teams
+		t2.getRosters().add(new Roster()); // need a week 1 roster
 		l.setAutoDraft(false);
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 		
 		Draft d = new Draft();
+		d.setLeague(l);
+		d.setPlayerSource(new TestPlayerSource());
+		
 		try {
 			d.start();
 		} catch (DraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		Member m = d.getWaitingFor();
 		
 		List<Player> players = d.getAvailablePlayers();
-		assertTrue(players.size() > 0);
+		assertTrue("There should be more than 0 available players", players.size() > 0);
 		
 		Team t = l.getTeam(m);
-		
-		Roster r = t.getRoster(l.getWeek());
+		Roster r = t.getRoster(1);
 		
 		Player p = players.get(0);
 		if (d.isStarterRound()) {
@@ -177,16 +189,17 @@ public class DraftTest {
 		League l = new League();
 		Team t1 = new Team();
 		Team t2 = new Team();
-		//TODO: set up teams
 		l.setAutoDraft(false);
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 		
 		Draft d = new Draft();
+		d.setLeague(l);
+		d.setPlayerSource(new TestPlayerSource());
+
 		try {
 			d.start();
 		} catch (DraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
