@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-public class TestPlayerSource implements PlayerSource {
+public class TestPlayerSource implements PlayerSource, RosterStore {
 
 	private List<Player> allPlayers = new ArrayList<Player>();
 	private List<Player> selectedPlayers = new ArrayList<Player>();
@@ -54,7 +54,7 @@ public class TestPlayerSource implements PlayerSource {
 		Iterator<Player> i = allPlayers.iterator();
 		while (i.hasNext()) {
 			Player p = i.next();
-			if (p.getPosition().equals(type)) {
+			if (p.getPosition().equals(type) && (!selectedPlayers.contains(p))) {
 				players.add(p);
 			}
 		}
@@ -70,13 +70,21 @@ public class TestPlayerSource implements PlayerSource {
 		while (i.hasNext()) {
 			Player p = i.next();
 			for (int j = 0; j < types.length; j++) {
-				if (p.getPosition().equals(types[j])) {
+				if (p.getPosition().equals(types[j]) && (!selectedPlayers.contains(p))) {
 					players.add(p);
 				}
 			}
 		}
 		return players;
 	
+	}
+
+	@Override
+	public void store(Roster r) {
+		
+		selectedPlayers.addAll(r.getStartingPlayers());
+		selectedPlayers.addAll(r.getBenchPlayers());
+		
 	}
 
 }

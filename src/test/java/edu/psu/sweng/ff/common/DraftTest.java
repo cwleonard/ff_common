@@ -138,17 +138,27 @@ public class DraftTest {
 	@Test
 	public void testManualPlayerDraft() {
 		
+		Member m1 = new Member();
+		m1.setUserName("member1");
+
+		Member m2 = new Member();
+		m2.setUserName("member2");
+
 		League l = new League();
 		Team t1 = new Team();
-		t1.getRosters().add(new Roster()); // need a week 1 roster
+		t1.setName("team1");
+		t1.setOwner(m1);
 		Team t2 = new Team();
-		t2.getRosters().add(new Roster()); // need a week 1 roster
+		t2.setName("team2");
+		t2.setOwner(m2);
 		l.setAutoDraft(false);
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 		
 		Draft d = l.getDraft();
-		d.setPlayerSource(new TestPlayerSource());
+		TestPlayerSource mockDatabase = new TestPlayerSource();
+		d.setPlayerSource(mockDatabase);
+		d.setRosterStore(mockDatabase);
 		
 		try {
 			l.startDraft();
@@ -162,21 +172,16 @@ public class DraftTest {
 		assertTrue("There should be more than 0 available players", players.size() > 0);
 		
 		Team t = l.getTeam(m);
-		Roster r = t.getRoster(1);
 		
 		Player p = players.get(0);
-		if (d.isStarterRound()) {
-			r.addStartingPlayer(p);
-		} else {
-			r.addBenchPlayer(p);
-		}
+		d.draftPlayer(p);
 		
 		// player should no longer be available
 		List<Player> players2 = d.getAvailablePlayers(l);
 		assertFalse(players2.contains(p));
 		
 		// player should be on team
-		assertTrue(t.hasPlayer(p));
+		assertTrue(t.hasPlayer(p, 1));
 		
 	}
 

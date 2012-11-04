@@ -146,8 +146,9 @@ public class Team {
 	 * @param p
 	 * @return
 	 */
-	public boolean hasPlayer(Player p) {
-		return false;
+	public boolean hasPlayer(Player p, int week) {
+		Roster r = getRoster(week);
+		return (r.getStartingPlayers().contains(p) || r.getBenchPlayers().contains(p));
 	}
 
 	public int getLeagueId() {

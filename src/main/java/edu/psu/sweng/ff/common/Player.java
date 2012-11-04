@@ -164,4 +164,18 @@ public class Player {
 		this.jerseyNumber = jerseyNumber;
 	}
 	
+	public boolean equals(Object o) {
+
+		if (o instanceof Player) {
+			
+			Player op = (Player)o;
+			return (op.id.equals(id));
+			
+		} else {
+			return false;
+		}
+		
+	}
+
+	
 }
