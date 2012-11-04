@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Member 
 {
-	private int id;
 	private String firstName;
 	private String lastName;
 	private String userName;
@@ -26,20 +25,6 @@ public class Member
 		invitations = new ArrayList<Invitation>();
 	}
 	
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	/**
 	 * @return the firstName
 	 */
@@ -206,7 +191,7 @@ public class Member
 		if (o instanceof Member) {
 			
 			Member om = (Member)o;
-			return (om.id == this.id);
+			return (om.userName == this.userName);
 			
 		} else {
 			return false;
