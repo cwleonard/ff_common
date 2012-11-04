@@ -1,6 +1,7 @@
 package edu.psu.sweng.ff.common;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Team {
@@ -18,6 +19,12 @@ public class Team {
 	private Standings standings;
 	
 	private int leagueId;
+	
+	private int points;
+	
+	private int wins;
+	
+	private int losses;
 
 	public Team() {
 		rosters = new ArrayList<Roster>();
@@ -114,14 +121,22 @@ public class Team {
 	 * @return
 	 */
 	public Roster getRoster(int week) {
-		
-		Roster r = this.rosters.get(week-1);
-		if (r == null) {
-			r = new Roster();
-			r.setTeamId(id);
-			r.setWeek(week);
+
+		Roster roster = null;
+		Iterator<Roster> ri = this.rosters.iterator();
+		while (ri.hasNext() && roster == null) {
+			Roster r = ri.next();
+			if (r.getWeek() == week) {
+				roster = r;
+			}
 		}
-		return r;
+		if (roster == null) {
+			roster = new Roster();
+			roster.setTeamId(id);
+			roster.setWeek(week);
+			rosters.add(roster);
+		}
+		return roster;
 		
 	}
 	
@@ -141,6 +156,48 @@ public class Team {
 
 	public void setLeagueId(int leagueId) {
 		this.leagueId = leagueId;
+	}
+
+	/**
+	 * @return the points
+	 */
+	public int getPoints() {
+		return points;
+	}
+
+	/**
+	 * @param points the points to set
+	 */
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	/**
+	 * @return the wins
+	 */
+	public int getWins() {
+		return wins;
+	}
+
+	/**
+	 * @param wins the wins to set
+	 */
+	public void setWins(int wins) {
+		this.wins = wins;
+	}
+
+	/**
+	 * @return the losses
+	 */
+	public int getLosses() {
+		return losses;
+	}
+
+	/**
+	 * @param losses the losses to set
+	 */
+	public void setLosses(int losses) {
+		this.losses = losses;
 	}
 	
 	

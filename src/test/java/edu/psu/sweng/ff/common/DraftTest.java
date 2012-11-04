@@ -29,10 +29,9 @@ public class DraftTest {
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 
-		Draft d = new Draft();
-		d.setLeague(l);
+		Draft d = l.getDraft();
 		try {
-			d.start();
+			l.startDraft();
 		} catch (DraftException e) {
 			e.printStackTrace();
 		}
@@ -112,11 +111,10 @@ public class DraftTest {
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 		
-		Draft d = new Draft();
-		d.setLeague(l);
+		Draft d = l.getDraft();
 		d.setPlayerSource(new TestPlayerSource());
 		try {
-			d.start();
+			d.start(l);
 		} catch (DraftException e) {
 			e.printStackTrace();
 		}
@@ -149,19 +147,18 @@ public class DraftTest {
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 		
-		Draft d = new Draft();
-		d.setLeague(l);
+		Draft d = l.getDraft();
 		d.setPlayerSource(new TestPlayerSource());
 		
 		try {
-			d.start();
+			l.startDraft();
 		} catch (DraftException e) {
 			e.printStackTrace();
 		}
 		
 		Member m = d.getWaitingFor();
 		
-		List<Player> players = d.getAvailablePlayers();
+		List<Player> players = d.getAvailablePlayers(l);
 		assertTrue("There should be more than 0 available players", players.size() > 0);
 		
 		Team t = l.getTeam(m);
@@ -175,7 +172,7 @@ public class DraftTest {
 		}
 		
 		// player should no longer be available
-		List<Player> players2 = d.getAvailablePlayers();
+		List<Player> players2 = d.getAvailablePlayers(l);
 		assertFalse(players2.contains(p));
 		
 		// player should be on team
@@ -193,19 +190,18 @@ public class DraftTest {
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 		
-		Draft d = new Draft();
-		d.setLeague(l);
+		Draft d = l.getDraft();
 		d.setPlayerSource(new TestPlayerSource());
 
 		try {
-			d.start();
+			l.startDraft();
 		} catch (DraftException e) {
 			e.printStackTrace();
 		}
 
 		do {
 		
-			List<Player> players = d.getAvailablePlayers();
+			List<Player> players = d.getAvailablePlayers(l);
 			Iterator<Player> it = players.iterator();
 			assertTrue(players.size() >= 40); // there must be at least 40 players (2 teams * 20 players)
 			while (it.hasNext()) {

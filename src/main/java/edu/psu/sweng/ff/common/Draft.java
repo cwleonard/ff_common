@@ -13,7 +13,7 @@ public class Draft {
 	
 	private Member waitingFor;
 	
-	private League league;
+	private int leagueId;
 	
 	private transient List<Team> teamOrder;
 	
@@ -24,6 +24,8 @@ public class Draft {
 	private transient Notifier notifier;
 	
 	private transient RosterStore rosterStore;
+	
+	//private transient League league;
 	
 	/**
 	 * @return the automatic
@@ -39,12 +41,12 @@ public class Draft {
 		this.automatic = automatic;
 	}
 	
-	public void start() throws DraftException {
+	public void start(League league) throws DraftException {
 
 		this.round = 1;
 		this.teamIndex = 0;
 		
-		List<Team> lt = this.league.getTeams();
+		List<Team> lt = league.getTeams();
 		
 		if (lt.size() < 2) {
 			throw new DraftException("draft cannot start until there are at least 2 teams in the league");
@@ -65,7 +67,7 @@ public class Draft {
 				while (i.hasNext()) {
 
 					Team t = i.next();
-					List<Player> players = this.getAvailablePlayers();
+					List<Player> players = this.getAvailablePlayers(league);
 
 					Player p = players.get(0); // first player should be top rated
 					Roster r = t.getRoster(1);
@@ -166,7 +168,7 @@ public class Draft {
 	 * 
 	 * @return
 	 */
-	public List<Player> getAvailablePlayers() {
+	public List<Player> getAvailablePlayers(League league) {
 		
 		List<Player> plist = null;
 		if (playerSource != null) {
@@ -240,17 +242,8 @@ public class Draft {
 	/**
 	 * @return the league
 	 */
-	public League getLeague() {
-		return league;
-	}
-
-	/**
-	 * @param league the league to set
-	 */
-	public void setLeague(League league) {
-		this.league = league;
-		league.setDraft(this);
-		this.setAutomatic(this.league.isAutoDraft());
+	public int getLeagueId() {
+		return leagueId;
 	}
 
 	/**
@@ -295,7 +288,19 @@ public class Draft {
 		this.rosterStore = rosterStore;
 	}
 	
-	
-	
+	public boolean started() {
+		return (this.round > 0);
+	}
+
+	public boolean finished() {
+		return (this.round > 20);
+	}
+
+	/**
+	 * @param leagueId the leagueId to set
+	 */
+	public void setLeagueId(int leagueId) {
+		this.leagueId = leagueId;
+	}
 	
 }

@@ -21,6 +21,8 @@ public class Player {
 	private String college;
 	
 	private String nflTeam;
+	
+	private int jerseyNumber;
 
 	/**
 	 * @return the id
@@ -147,7 +149,19 @@ public class Player {
 	public void setNflTeam(String nflTeam) {
 		this.nflTeam = nflTeam;
 	}
-	
-	
+
+	/**
+	 * @return the jerseyNumber
+	 */
+	public int getJerseyNumber() {
+		return jerseyNumber;
+	}
+
+	/**
+	 * @param jerseyNumber the jerseyNumber to set
+	 */
+	public void setJerseyNumber(int jerseyNumber) {
+		this.jerseyNumber = jerseyNumber;
+	}
 	
 }

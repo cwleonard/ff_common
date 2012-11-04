@@ -1,6 +1,7 @@
 package edu.psu.sweng.ff.common;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class League {
@@ -11,8 +12,6 @@ public class League {
 	
 	private Member commissioner;
 	
-	private boolean autoDraft;
-	
 	private Season season;
 	
 	private List<Team> teams;
@@ -22,6 +21,7 @@ public class League {
 	private int week;
 
 	public League() {
+		this.draft = new Draft();
 		this.teams = new ArrayList<Team>();
 	}
 	
@@ -71,14 +71,14 @@ public class League {
 	 * @return the autoDraft
 	 */
 	public boolean isAutoDraft() {
-		return autoDraft;
+		return this.draft.isAutomatic();
 	}
 
 	/**
 	 * @param autoDraft the autoDraft to set
 	 */
 	public void setAutoDraft(boolean autoDraft) {
-		this.autoDraft = autoDraft;
+		this.draft.setAutomatic(autoDraft);
 	}
 
 	/**
@@ -138,8 +138,11 @@ public class League {
 	}
 
 	public void startDraft() throws DraftException {
-		this.draft.setAutomatic(this.autoDraft);
-		this.draft.start();
+		this.draft.start(this);
+	}
+	
+	public List<Player> getAvailablePlayers() {
+		return this.draft.getAvailablePlayers(this);
 	}
 	
 	/**
@@ -149,8 +152,17 @@ public class League {
 	 * @return
 	 */
 	public Team getTeam(Member m) {
-		//TODO: the right thing
-		return new Team();
+		Team t = null;
+		if (this.teams != null) {
+			Iterator<Team> i = this.teams.iterator();
+			while (i.hasNext()) {
+				Team x = i.next();
+				if (x.getOwner().equals(m)) {
+					t = x;
+				}
+			}
+		}
+		return t;
 	}
 	
 }
