@@ -25,7 +25,7 @@ public class DraftTest {
 		League l = new League();
 		Team t1 = new Team();
 		Team t2 = new Team();
-		l.setAutoDraft(true);
+		l.setAutoDraft(false);
 		l.getTeams().add(t1);
 		l.getTeams().add(t2);
 
