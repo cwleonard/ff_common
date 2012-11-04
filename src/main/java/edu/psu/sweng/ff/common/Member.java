@@ -191,7 +191,7 @@ public class Member
 		if (o instanceof Member) {
 			
 			Member om = (Member)o;
-			return (om.userName == this.userName);
+			return (om.userName.equals(this.userName));
 			
 		} else {
 			return false;
