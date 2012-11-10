@@ -174,7 +174,11 @@ public class DraftTest {
 		Team t = l.getTeam(m);
 		
 		Player p = players.get(0);
-		d.draftPlayer(p);
+		try {
+			d.draftPlayer(p);
+		} catch (DraftException e) {
+			fail("draft exception thrown");
+		}
 		
 		// player should no longer be available
 		List<Player> players2 = d.getAvailablePlayers(l);

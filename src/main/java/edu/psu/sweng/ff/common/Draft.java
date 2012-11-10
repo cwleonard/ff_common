@@ -79,7 +79,11 @@ public class Draft {
 					}
 					
 					if (this.rosterStore != null) {
-						this.rosterStore.store(r);
+						try {
+							this.rosterStore.store(r);
+						} catch (DatabaseException e) {
+							throw new DraftException("Database problem with the draft!");
+						}
 					}
 
 				}
@@ -101,7 +105,7 @@ public class Draft {
 		
 	}
 	
-	public boolean draftPlayer(Player p) {
+	public boolean draftPlayer(Player p) throws DraftException {
 		
 		Team team = this.teamOrder.get(this.teamIndex);
 		Roster r = team.getRoster(1);
@@ -112,7 +116,11 @@ public class Draft {
 		}
 		
 		if (this.rosterStore != null) {
-			this.rosterStore.store(r);
+			try {
+				this.rosterStore.store(r);
+			} catch (DatabaseException e) {
+				throw new DraftException("Database problem with the draft!");
+			}
 		}
 		
 		if (!this.nextTeam()) {
