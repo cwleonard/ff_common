@@ -19,6 +19,8 @@ public class League {
 	private Draft draft;
 	
 	private int week;
+	
+	private Schedule schedule;
 
 	public League() {
 		this.draft = new Draft();
@@ -164,5 +166,15 @@ public class League {
 		}
 		return t;
 	}
+
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
+	
+	
 	
 }
