@@ -37,7 +37,7 @@ public class Matchup {
 		if (o instanceof Matchup) {
 			
 			Matchup other = (Matchup)o;
-			return (this.week == other.week && this.teamA == other.teamA && this.teamB == other.teamB);
+			return (this.week == other.week && ((this.teamA == other.teamB && this.teamB == other.teamA) || (this.teamA == other.teamA && this.teamB == other.teamB)));
 			
 		} else {
 			return false;

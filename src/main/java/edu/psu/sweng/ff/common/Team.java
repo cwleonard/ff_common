@@ -201,5 +201,17 @@ public class Team {
 		this.losses = losses;
 	}
 	
+	public boolean equals(Object o) {
+		
+		if (o == null) return false;
+		
+		if (o instanceof Team) {
+			Team other = (Team)o;
+			return (this.id == other.id);
+		} else {
+			return false;
+		}
+		
+	}
 	
 }
