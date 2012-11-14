@@ -32,12 +32,22 @@ public class Matchup {
 		this.teamB = teamB;
 	}
 	
+	public int hashCode() {
+		if (teamA < teamB) {
+			return (teamA + "_" + teamB).hashCode();
+		} else {
+			return (teamB + "_" + teamA).hashCode();
+		}
+	}
+	
 	public boolean equals(Object o) {
 		
 		if (o instanceof Matchup) {
 			
 			Matchup other = (Matchup)o;
-			return (this.week == other.week && ((this.teamA == other.teamB && this.teamB == other.teamA) || (this.teamA == other.teamA && this.teamB == other.teamB)));
+			boolean same = ((this.teamA == other.teamB && this.teamB == other.teamA) ||
+					(this.teamA == other.teamA && this.teamB == other.teamB));
+			return same;
 			
 		} else {
 			return false;
