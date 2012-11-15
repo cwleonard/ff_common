@@ -1,9 +1,12 @@
 package edu.psu.sweng.ff.common;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Schedule {
 
@@ -34,6 +37,18 @@ public class Schedule {
 		this.leagueId = leagueId;
 	}
 	
-	
+	public Collection<Matchup> getAllMatchups() {
+		
+		Collection<Matchup> cm = new ArrayList<Matchup>();
+		
+		Iterator<Integer> ki = matchups.keySet().iterator();
+		while (ki.hasNext()) {
+			List<Matchup> lm = matchups.get(ki.next());
+			cm.addAll(lm);
+		}
+		
+		return cm;
+		
+	}
 	
 }
