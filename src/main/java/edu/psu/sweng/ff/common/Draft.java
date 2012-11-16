@@ -170,6 +170,37 @@ public class Draft {
 	}
 	
 	
+	public String[] getCurrentPosition() {
+		
+		String[] p = null;
+		if (this.round == 1 || this.round == 11) {
+			p = new String[1];
+			p[0] = "QB";
+		} else if (this.round == 2 || this.round == 3 || this.round == 12 || this.round == 13) {
+			p = new String[1];
+			p[0] = "RB";
+		} else if (this.round == 4 || this.round == 5 || this.round == 14 || this.round == 15) {
+			p = new String[1];
+			p[0] = "WR";
+		} else if (this.round == 6 || this.round == 16) {
+			p = new String[1];
+			p[0] = "TE";
+		} else if (this.round == 7 || this.round == 8 || this.round == 17 || this.round == 18) {
+			p = new String[3];
+			p[0] = "RB";
+			p[1] = "WR";
+			p[2] = "TE";
+		} else if (this.round == 9 || this.round == 19) {
+			p = new String[1];
+			p[0] = "DE";
+		} else if (this.round == 10 || this.round == 20) {
+			p = new String[1];
+			p[0] = "K";
+		}
+		return p;
+		
+	}
+	
 	/**
 	 * Should return a list of the players that are available
 	 * in the current round of the draft.
@@ -180,21 +211,22 @@ public class Draft {
 		
 		List<Player> plist = null;
 		if (playerSource != null) {
-			if (this.round == 1 || this.round == 11) {
-				plist = playerSource.getByType(league.getId(), "QB");
-			} else if (this.round == 2 || this.round == 3 || this.round == 12 || this.round == 13) {
-				plist = playerSource.getByType(league.getId(), "RB");
-			} else if (this.round == 4 || this.round == 5 || this.round == 14 || this.round == 15) {
-				plist = playerSource.getByType(league.getId(), "WR");
-			} else if (this.round == 6 || this.round == 16) {
-				plist = playerSource.getByType(league.getId(), "TE");
-			} else if (this.round == 7 || this.round == 8 || this.round == 17 || this.round == 18) {
-				plist = playerSource.getByType(league.getId(), "RB","WR","TE");
-			} else if (this.round == 9 || this.round == 19) {
-				plist = playerSource.getByType(league.getId(), "DE");
-			} else if (this.round == 10 || this.round == 20) {
-				plist = playerSource.getByType(league.getId(), "K");
-			}
+			plist = playerSource.getByType(league.getId(), this.getCurrentPosition());
+//			if (this.round == 1 || this.round == 11) {
+//				plist = playerSource.getByType(league.getId(), "QB");
+//			} else if (this.round == 2 || this.round == 3 || this.round == 12 || this.round == 13) {
+//				plist = playerSource.getByType(league.getId(), "RB");
+//			} else if (this.round == 4 || this.round == 5 || this.round == 14 || this.round == 15) {
+//				plist = playerSource.getByType(league.getId(), "WR");
+//			} else if (this.round == 6 || this.round == 16) {
+//				plist = playerSource.getByType(league.getId(), "TE");
+//			} else if (this.round == 7 || this.round == 8 || this.round == 17 || this.round == 18) {
+//				plist = playerSource.getByType(league.getId(), "RB","WR","TE");
+//			} else if (this.round == 9 || this.round == 19) {
+//				plist = playerSource.getByType(league.getId(), "DE");
+//			} else if (this.round == 10 || this.round == 20) {
+//				plist = playerSource.getByType(league.getId(), "K");
+//			}
 		} else {
 			plist = new ArrayList<Player>();
 		}
@@ -310,5 +342,21 @@ public class Draft {
 	public void setLeagueId(int leagueId) {
 		this.leagueId = leagueId;
 	}
+
+	/**
+	 * @return the teamOrder
+	 */
+	public List<Team> getTeamOrder() {
+		return teamOrder;
+	}
+
+	/**
+	 * @param teamOrder the teamOrder to set
+	 */
+	public void setTeamOrder(List<Team> teamOrder) {
+		this.teamOrder = teamOrder;
+	}
+	
+	
 	
 }
