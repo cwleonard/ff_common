@@ -14,6 +14,8 @@ public class Roster {
 	private List<Player> startingPlayers;
 	
 	private List<Player> benchPlayers;
+	
+	private String defenseTeam;
 
 	public Roster() {
 		startingPlayers = new ArrayList<Player>();
@@ -108,6 +110,14 @@ public class Roster {
 	
 	public void removePlayer(Player p) {
 		//TODO
+	}
+
+	public String getDefenseTeam() {
+		return defenseTeam;
+	}
+
+	public void setDefenseTeam(String defenseTeam) {
+		this.defenseTeam = defenseTeam;
 	}
 	
 }

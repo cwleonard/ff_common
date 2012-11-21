@@ -25,6 +25,8 @@ public class Team {
 	private int wins;
 	
 	private int losses;
+	
+	private int pointsThisWeek;
 
 	public Team() {
 		rosters = new ArrayList<Roster>();
@@ -213,5 +215,15 @@ public class Team {
 		}
 		
 	}
+
+	public int getPointsThisWeek() {
+		return pointsThisWeek;
+	}
+
+	public void setPointsThisWeek(int pointsThisWeek) {
+		this.pointsThisWeek = pointsThisWeek;
+	}
+	
+	
 	
 }
