@@ -11,6 +11,8 @@ public class Roster {
 	
 	private int week;
 	
+	private int points;
+	
 	private List<Player> startingPlayers;
 	
 	private List<Player> benchPlayers;
@@ -100,18 +102,6 @@ public class Roster {
 		this.benchPlayers.add(p);
 	}
 	
-	public void removeStartingPlayer(Player p) {
-		//TODO
-	}
-	
-	public void removeBenchPlayer(Player p) {
-		//TODO
-	}
-	
-	public void removePlayer(Player p) {
-		//TODO
-	}
-
 	public String getDefenseTeam() {
 		return defenseTeam;
 	}
@@ -119,5 +109,15 @@ public class Roster {
 	public void setDefenseTeam(String defenseTeam) {
 		this.defenseTeam = defenseTeam;
 	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+	
+	
 	
 }

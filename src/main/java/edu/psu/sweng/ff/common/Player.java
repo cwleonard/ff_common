@@ -23,6 +23,10 @@ public class Player {
 	private String nflTeam;
 	
 	private int jerseyNumber;
+	
+	private int points;
+	
+	private int week;
 
 	/**
 	 * @return the id
@@ -164,6 +168,22 @@ public class Player {
 		this.jerseyNumber = jerseyNumber;
 	}
 	
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	public int getWeek() {
+		return week;
+	}
+
+	public void setWeek(int week) {
+		this.week = week;
+	}
+
 	public boolean equals(Object o) {
 
 		if (o instanceof Player) {
