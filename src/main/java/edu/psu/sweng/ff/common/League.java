@@ -12,8 +12,6 @@ public class League {
 	
 	private Member commissioner;
 	
-	private Season season;
-	
 	private List<Team> teams;
 	
 	private Draft draft;
@@ -81,20 +79,6 @@ public class League {
 	 */
 	public void setAutoDraft(boolean autoDraft) {
 		this.draft.setAutomatic(autoDraft);
-	}
-
-	/**
-	 * @return the season
-	 */
-	public Season getSeason() {
-		return season;
-	}
-
-	/**
-	 * @param season the season to set
-	 */
-	public void setSeason(Season season) {
-		this.season = season;
 	}
 
 	/**

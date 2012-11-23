@@ -16,8 +16,6 @@ public class Team {
 	
 	private List<Roster> rosters;
 	
-	private Standings standings;
-	
 	private int leagueId;
 	
 	private int points;
@@ -102,20 +100,6 @@ public class Team {
 		this.rosters = rosters;
 	}
 
-	/**
-	 * @return the standings
-	 */
-	public Standings getStandings() {
-		return standings;
-	}
-
-	/**
-	 * @param standings the standings to set
-	 */
-	public void setStandings(Standings standings) {
-		this.standings = standings;
-	}
-	
 	/**
 	 * Should return the Roster for the given week.
 	 * 
